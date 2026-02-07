@@ -1,16 +1,48 @@
-# React + Vite
+to create databasec
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+```
+CREATE TABLE nominations (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  
+  -- Personal Details
+  fullname TEXT NOT NULL,
+  membership TEXT NOT NULL,
+  phone TEXT NOT NULL,
+  address TEXT NOT NULL,
+  
+  -- Academic & Professional
+  qualifications TEXT NOT NULL,
+  serviceInstitute TEXT NOT NULL,
+  serviceOther TEXT NOT NULL,
+  awards TEXT NOT NULL,
+  hobbies TEXT NOT NULL,
+  otherInfo TEXT NOT NULL,
+  
+  -- Sponsors
+  sponsor1 TEXT NOT NULL,
+  sponsor1no TEXT NOT NULL,
+  sponsor2 TEXT NOT NULL,
+  sponsor2no TEXT NOT NULL,
+  
+  -- District Society
+  chairman TEXT NOT NULL,
+  district TEXT NOT NULL,
+  
+  -- Tax Clearance
+  taxfile TEXT NOT NULL,
+  
+  -- Metadata
+  submitted_at TIMESTAMPTZ DEFAULT NOW(),
+  status TEXT NOT NULL DEFAULT 'pending',
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+```
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## React Compiler
+.env file:
+```
+VITE_SUPABASE_URL=supabase_url of your database in dsupabase dashboard after database creation
+VITE_SUPABASE_PUBLISHABLE_DEFAULT_KEY=ssame her   click connect on supabase dashboard after creating database u will be able to copu neccesary key for env
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
